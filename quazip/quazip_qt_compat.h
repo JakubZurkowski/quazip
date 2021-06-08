@@ -109,7 +109,7 @@ inline QString quazip_symlink_target(const QFileInfo &fi) {
 #if (QT_VERSION >= 0x040700)
 inline quint64 quazip_ntfs_ticks(const QDateTime &time, int fineTicks) {
     QDateTime base(QDate(1601, 1, 1), QTime(0, 0), Qt::UTC);
-    return base.msecsTo(time) * 10000 + fineTicks;
+    return static_cast<quint64>(base.msecsTo(time) * 10000 + fineTicks);
 }
 #else
 inline quint64 quazip_ntfs_ticks(const QDateTime &time, int fineTicks) {
